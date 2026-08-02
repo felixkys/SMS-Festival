@@ -226,6 +226,7 @@
             justify-content: space-between;
             border: 1px solid var(--border);
             transition: transform 0.1s, border-color 0.2s;
+            cursor: pointer;
         }
 
         .artist-card:active {
@@ -258,12 +259,15 @@
         }
 
         .fav-star {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             cursor: pointer;
             color: var(--text-muted);
             user-select: none;
             transition: color 0.2s, transform 0.2s;
-            padding: 4px;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .fav-star.active {
@@ -334,7 +338,7 @@
         // Service Worker
         if ('serviceWorker' in navigator) {
             const swCode = `
-                const CACHE_NAME = 'sms-pwa-v5';
+                const CACHE_NAME = 'sms-pwa-v6';
                 self.addEventListener('install', e => {
                     e.waitUntil(
                         caches.open(CACHE_NAME).then(cache => cache.addAll(['./']))
@@ -357,7 +361,6 @@
         }
 
         function toggleFav(id) {
-            const scrollPos = window.scrollY;
             const index = favorites.indexOf(id);
             if (index > -1) {
                 favorites.splice(index, 1);
@@ -365,8 +368,24 @@
                 favorites.push(id);
             }
             saveFavs();
-            renderData();
-            window.scrollTo(0, scrollPos);
+
+            // Direct DOM update without full re-render (prevents losing click state/scroll)
+            const card = document.querySelector(`[data-id="${CSS.escape(id)}"]`);
+            if (card) {
+                const isFav = favorites.includes(id);
+                card.classList.toggle('is-fav', isFav);
+                const star = card.querySelector('.fav-star');
+                if (star) {
+                    star.classList.toggle('active', isFav);
+                }
+            }
+
+            // If we are in "Only Favorites" view, re-render to update the list
+            if (showOnlyFavs) {
+                const scrollPos = window.scrollY;
+                renderData();
+                window.scrollTo(0, scrollPos);
+            }
         }
 
         function toggleFavFilter() {
@@ -465,12 +484,12 @@
                             const isFav = favorites.includes(artistId);
 
                             stageHtml += `
-                                <div class="artist-card ${isFav ? 'is-fav' : ''}">
+                                <div class="artist-card ${isFav ? 'is-fav' : ''}" data-id="${artistId}" onclick="toggleFav('${artistId}')">
                                     <div class="artist-info">
                                         <div class="artist-name">${item.artist}</div>
                                         <div class="artist-time">${item.time}</div>
                                     </div>
-                                    <div class="fav-star ${isFav ? 'active' : ''}" onclick="toggleFav('${artistId}')">
+                                    <div class="fav-star ${isFav ? 'active' : ''}">
                                         ★
                                     </div>
                                 </div>
