@@ -527,7 +527,7 @@ html_content = f"""<!DOCTYPE html>
         // Service Worker
         if ('serviceWorker' in navigator) {{
             const swCode = `
-                const CACHE_NAME = 'sms-pwa-v4';
+                const CACHE_NAME = 'sms-pwa-v5';
                 self.addEventListener('install', e => {{
                     e.waitUntil(
                         caches.open(CACHE_NAME).then(cache => cache.addAll(['./']))
@@ -694,3 +694,10 @@ html_content = f"""<!DOCTYPE html>
     </script>
 </body>
 </html>
+"""
+
+output_path = "index.html"
+with open(output_path, "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print(f"File index.html created successfully: {output_path}")
