@@ -1,4 +1,197 @@
-<!DOCTYPE html>
+import json
+
+data = {
+    "05.08. Mi": {
+        "SMS.Kick off": [
+            {"time": "18:00–19:00", "artist": "Sagezza"},
+            {"time": "19:00–20:00", "artist": "Katy Rough"},
+            {"time": "20:00–21:00", "artist": "Mariybu"},
+            {"time": "21:00–22:00", "artist": "HouseKaspeR"},
+            {"time": "22:00–23:00", "artist": "KXXMA"},
+            {"time": "23:00–00:00", "artist": "Foxon"}
+        ]
+    },
+    "06.08. Do": {
+        "SMS.Kick off": [
+            {"time": "18:00–19:00", "artist": "TMLS"},
+            {"time": "19:00–20:00", "artist": "Carpool Boy"},
+            {"time": "20:00–21:15", "artist": "Luke Madness"},
+            {"time": "21:15–22:15", "artist": "Tekkschuster"},
+            {"time": "22:15–23:15", "artist": "BOVSKI"},
+            {"time": "23:30–01:00", "artist": "Tiefundton F2F Taktstörer"}
+        ]
+    },
+    "07.08. Fr": {
+        "Main Stage": [
+            {"time": "17:00–18:00", "artist": "Green aka Agent A"},
+            {"time": "18:05–19:05", "artist": "Die Gebrüder Brett"},
+            {"time": "19:25–20:25", "artist": "Ikkimel"},
+            {"time": "20:35–21:35", "artist": "Gestört aber Geil"},
+            {"time": "22:00–23:25", "artist": "The Chainsmokers"},
+            {"time": "23:40–01:10", "artist": "Fisher"},
+            {"time": "01:30–02:40", "artist": "Scooter"},
+            {"time": "03:00–04:00", "artist": "Holy Priest PRES. HOLY SHIT SHOW"}
+        ],
+        "Main Circus": [
+            {"time": "18:00–20:00", "artist": "Kander"},
+            {"time": "20:00–21:30", "artist": "Ueberrest B2B Azzel 447"},
+            {"time": "21:30–23:00", "artist": "Prada2000"},
+            {"time": "23:00–00:30", "artist": "Somewhen"},
+            {"time": "00:30–02:00", "artist": "Kobosil"},
+            {"time": "02:00–03:00", "artist": "b2b2b2b"},
+            {"time": "03:00–04:30", "artist": "Clara Cuvé"},
+            {"time": "04:30–06:00", "artist": "Aiden"}
+        ],
+        "Sun Stage": [
+            {"time": "18:00–19:30", "artist": "T.M.N.H."},
+            {"time": "19:30–21:00", "artist": "DJ Gigola"},
+            {"time": "21:00–22:30", "artist": "LEVT"},
+            {"time": "22:30–00:00", "artist": "KUKO"},
+            {"time": "00:00–01:30", "artist": "Novah"},
+            {"time": "01:30–03:00", "artist": "Sara Landry"},
+            {"time": "03:00–05:00", "artist": "Cloudy"}
+        ],
+        "SMS.Fortress": [
+            {"time": "18:00–19:30", "artist": "DJ Tallboy"},
+            {"time": "19:30–21:00", "artist": "Trancemaster Krause"},
+            {"time": "21:00–22:30", "artist": "Hannah Laing"},
+            {"time": "22:30–00:00", "artist": "Paraçek"},
+            {"time": "00:00–01:30", "artist": "Pegassi"},
+            {"time": "01:30–03:00", "artist": "Schrotthagen"},
+            {"time": "03:00–06:00", "artist": "Cara Elizabeth B2B Part Time Killer"}
+        ],
+        "SMS.Beach": [
+            {"time": "17:00–18:30", "artist": "Marc Werner"},
+            {"time": "18:30–20:00", "artist": "Rezident"},
+            {"time": "20:00–21:30", "artist": "Kaufmann"},
+            {"time": "21:30–23:00", "artist": "Moritz Hofbauer"},
+            {"time": "23:00–00:30", "artist": "Dirty Doering"},
+            {"time": "00:30–02:00", "artist": "Alfred Heinrichs"},
+            {"time": "02:00–03:30", "artist": "Amber Broos"},
+            {"time": "03:30–05:00", "artist": "Tiefundton"},
+            {"time": "05:00–07:00", "artist": "Techmo"}
+        ],
+        "Breaks'n'Drums": [
+            {"time": "19:00–21:00", "artist": "Jon Void B2B Brian Brainstrom B2B Rebko"},
+            {"time": "21:00–22:15", "artist": "Bootleg feat. Daxta MC"},
+            {"time": "22:15–23:15", "artist": "[IVY]"},
+            {"time": "23:15–00:30", "artist": "Luude"},
+            {"time": "00:30–01:30", "artist": "Basstripper"},
+            {"time": "01:30–03:00", "artist": "Zombie Cats feat. Benski"},
+            {"time": "03:00–04:30", "artist": "Colin Cage"},
+            {"time": "04:30–06:00", "artist": "Calvin Burkardt"}
+        ],
+        "Club Stage": [
+            {"time": "20:00–21:00", "artist": "BIG TIM"},
+            {"time": "21:00–22:00", "artist": "Noel Holler"},
+            {"time": "22:00–23:00", "artist": "Niklas Dee"},
+            {"time": "23:00–00:20", "artist": "Luca-Dante Spadafora"},
+            {"time": "00:30–02:00", "artist": "OBS"},
+            {"time": "02:00–03:30", "artist": "Jerome"},
+            {"time": "03:30–05:00", "artist": "AXMO"}
+        ]
+    },
+    "08.08. Sa": {
+        "Main Stage": [
+            {"time": "17:00–17:55", "artist": "Natte Visstick"},
+            {"time": "18:15–19:15", "artist": "Filow"},
+            {"time": "19:45–21:15", "artist": "Paul Kalkbrenner"},
+            {"time": "21:50–23:05", "artist": "SDP"},
+            {"time": "23:35–00:50", "artist": "BUNT."},
+            {"time": "01:30–03:00", "artist": "Skrillex EXCLUSIVE FESTIVAL SHOW IN GERMANY"},
+            {"time": "03:00–03:15", "artist": "Fireworks"}
+        ],
+        "Main Circus": [
+            {"time": "18:00–20:00", "artist": "Karla Blum"},
+            {"time": "20:00–21:15", "artist": "Lexy & K-Paul"},
+            {"time": "21:15–22:30", "artist": "Ely Oaks"},
+            {"time": "22:30–00:00", "artist": "KAACEE KomaCasper"},
+            {"time": "00:00–01:30", "artist": "REWI"},
+            {"time": "01:30–03:00", "artist": "Vieze Asbak"},
+            {"time": "03:15–04:15", "artist": "Angerfist"},
+            {"time": "04:15–05:00", "artist": "Basskiller"}
+        ],
+        "Sun Stage": [
+            {"time": "17:30–18:45", "artist": "Charleen Herzig"},
+            {"time": "18:45–20:00", "artist": "Kim Swim"},
+            {"time": "20:00–21:30", "artist": "Mischluft"},
+            {"time": "21:30–23:00", "artist": "Funk Tribu PRES. TRIBE A/V SHOW"},
+            {"time": "23:00–00:00", "artist": "Kalte Liebe LIVE"},
+            {"time": "00:00–01:30", "artist": "Klangkuenstler"},
+            {"time": "01:30–03:00", "artist": "Nico Moreno"},
+            {"time": "03:00–04:30", "artist": "I Hate Models"},
+            {"time": "04:30–06:00", "artist": "Fantasm"}
+        ],
+        "SMS.Fortress": [
+            {"time": "18:00–19:30", "artist": "BEXTC"},
+            {"time": "19:30–21:00", "artist": "NOTMYTYPE"},
+            {"time": "21:00–22:30", "artist": "Neon Graveyard"},
+            {"time": "22:30–00:00", "artist": "NIKOLINA"},
+            {"time": "00:00–01:30", "artist": "Nicolas Julian"},
+            {"time": "01:30–03:00", "artist": "A.N.I."},
+            {"time": "03:00–04:30", "artist": "JOWI"},
+            {"time": "04:30–06:00", "artist": "ElMefti"}
+        ],
+        "SMS.Beach": [
+            {"time": "14:00–15:00", "artist": "JOGA am Strand"},
+            {"time": "15:00–16:30", "artist": "Sarazar"},
+            {"time": "16:30–18:00", "artist": "Niconé"},
+            {"time": "18:00–19:30", "artist": "Mikah"},
+            {"time": "19:30–21:00", "artist": "Dominique Jardin"},
+            {"time": "21:00–22:30", "artist": "Township Rebellion"},
+            {"time": "22:30–00:00", "artist": "AEREA"},
+            {"time": "00:00–03:00", "artist": "Mika Heggemann B2B Davyboi"},
+            {"time": "03:15–05:00", "artist": "Bonnie Strange"},
+            {"time": "05:00–07:00", "artist": "Kyanu"},
+            {"time": "07:00–09:00", "artist": "Rainer Wachtelborn"}
+        ],
+        "Breaks'n'Drums": [
+            {"time": "18:00–19:00", "artist": "Kim Noble vs. Die Genossen Fett"},
+            {"time": "20:00–21:30", "artist": "Pull180"},
+            {"time": "21:30–22:45", "artist": "Judokay feat. MC Rob.K"},
+            {"time": "22:45–00:00", "artist": "Enter B2B Qerty"},
+            {"time": "00:00–01:00", "artist": "T&Sugah"},
+            {"time": "01:00–02:30", "artist": "Andy C"},
+            {"time": "02:30–03:30", "artist": "Tantron"},
+            {"time": "03:30–04:30", "artist": "VMAX B2B KIMMO"},
+            {"time": "04:30–06:00", "artist": "Hasky"}
+        ],
+        "Club Stage": [
+            {"time": "19:00–20:00", "artist": "Linda Grazia"},
+            {"time": "20:00–21:00", "artist": "Blondee"},
+            {"time": "21:00–22:00", "artist": "JO'L"},
+            {"time": "22:00–23:00", "artist": "DIA Plattenpussys"},
+            {"time": "23:00–00:00", "artist": "Plastik Funk"},
+            {"time": "00:00–01:00", "artist": "Justin Prince"},
+            {"time": "01:00–02:00", "artist": "Ostekke"},
+            {"time": "02:00–03:00", "artist": "Taktstörer"},
+            {"time": "03:00–04:00", "artist": "BLVCK CROWZ"},
+            {"time": "04:00–05:00", "artist": "AVE"},
+            {"time": "05:00–06:00", "artist": "Fappe & Bru"}
+        ],
+        "SMS.Boat": [
+            {"time": "11:00–12:00", "artist": "Franz!"},
+            {"time": "12:00–13:00", "artist": "Phake"},
+            {"time": "13:00–14:00", "artist": "Charleen Herzig"},
+            {"time": "14:00–15:00", "artist": "Davyboi"},
+            {"time": "15:00–16:00", "artist": "Andata"},
+            {"time": "16:00–17:00", "artist": "LEVT"},
+            {"time": "17:00–18:00", "artist": "KAACEE KomaCasper"},
+            {"time": "18:00–19:00", "artist": "Mika Heggemann"},
+            {"time": "19:00–20:00", "artist": "Township Rebellion"}
+        ]
+    },
+    "09.08. So": {
+        "SMS.Beach": [
+            {"time": "09:00–11:00", "artist": "Alice DiMar"},
+            {"time": "11:00–13:00", "artist": "Gunjah"},
+            {"time": "13:00–15:00", "artist": "Markus Kavka"},
+            {"time": "15:00–17:00", "artist": "LEVT"}
+        ]
+    }
+}
+
+html_content = f"""<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +203,7 @@
     <meta name="apple-mobile-web-app-title" content="SMS Schedule">
     <link rel="manifest" id="manifest-placeholder">
     <style>
-        :root {
+        :root {{
             --bg: #0a0a0c;
             --surface: #141418;
             --surface-accent: #22222a;
@@ -21,24 +214,25 @@
             --text-muted: #a1a1aa;
             --border: #27272a;
             --star-color: #facc15;
-        }
+            --time-color: #fde047;
+        }}
 
-        * {
+        * {{
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             -webkit-tap-highlight-color: transparent;
-        }
+        }}
 
-        body {
+        body {{
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg);
             color: var(--text);
             padding-bottom: 30px;
             overscroll-behavior-y: none;
-        }
+        }}
 
-        header {
+        header {{
             position: sticky;
             top: 0;
             z-index: 100;
@@ -47,16 +241,16 @@
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             padding: 12px 16px 8px 16px;
-        }
+        }}
 
-        .header-title {
+        .header-title {{
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 12px;
-        }
+        }}
 
-        .header-title h1 {
+        .header-title h1 {{
             font-size: 1.25rem;
             font-weight: 800;
             background: linear-gradient(135deg, #facc15, #f59e0b);
@@ -64,9 +258,9 @@
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-        }
+        }}
 
-        .badge-pwa {
+        .badge-pwa {{
             font-size: 0.7rem;
             background: rgba(250, 204, 21, 0.12);
             color: var(--primary);
@@ -74,13 +268,13 @@
             padding: 3px 8px;
             border-radius: 12px;
             font-weight: 600;
-        }
+        }}
 
-        .search-box {
+        .search-box {{
             margin-bottom: 10px;
-        }
+        }}
 
-        .search-box input {
+        .search-box input {{
             width: 100%;
             background: var(--surface);
             border: 1px solid var(--border);
@@ -90,25 +284,25 @@
             font-size: 0.95rem;
             outline: none;
             transition: border-color 0.2s;
-        }
+        }}
 
-        .search-box input:focus {
+        .search-box input:focus {{
             border-color: var(--primary);
-        }
+        }}
 
-        .nav-days {
+        .nav-days {{
             display: flex;
             gap: 6px;
             overflow-x: auto;
             scrollbar-width: none;
             padding-bottom: 4px;
-        }
+        }}
 
-        .nav-days::-webkit-scrollbar {
+        .nav-days::-webkit-scrollbar {{
             display: none;
-        }
+        }}
 
-        .day-btn {
+        .day-btn {{
             background: var(--surface);
             border: 1px solid var(--border);
             color: var(--text-muted);
@@ -121,30 +315,30 @@
             transition: all 0.2s;
             flex-shrink: 0;
             outline: none;
-        }
+        }}
 
-        .day-btn.active {
+        .day-btn.active {{
             background: var(--primary);
             color: #000000;
             border-color: var(--primary);
             box-shadow: 0 0 12px rgba(250, 204, 21, 0.35);
             font-weight: 700;
-        }
+        }}
 
-        .day-btn.disabled {
+        .day-btn.disabled {{
             opacity: 0.4;
             pointer-events: none;
-        }
+        }}
 
-        .filter-bar {
+        .filter-bar {{
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 12px 16px;
             gap: 10px;
-        }
+        }}
 
-        .filter-btn {
+        .filter-btn {{
             background: var(--surface);
             border: 1px solid var(--border);
             color: var(--text);
@@ -161,32 +355,32 @@
             flex-shrink: 0;
             transition: all 0.2s ease;
             outline: none;
-        }
+        }}
 
-        .filter-btn.active {
+        .filter-btn.active {{
             background: var(--accent);
             color: #000000;
             border-color: var(--accent);
             font-weight: 700;
             box-shadow: 0 0 12px rgba(250, 204, 21, 0.4);
-        }
+        }}
 
-        .global-status {
+        .global-status {{
             font-size: 0.8rem;
             color: var(--text-muted);
             font-weight: 500;
             text-align: right;
-        }
+        }}
 
-        .container {
+        .container {{
             padding: 0 16px;
-        }
+        }}
 
-        .day-block {
+        .day-block {{
             margin-bottom: 24px;
-        }
+        }}
 
-        .global-day-title {
+        .global-day-title {{
             font-size: 1.1rem;
             font-weight: 800;
             color: #ffffff;
@@ -197,13 +391,13 @@
             border-radius: 0 8px 8px 0;
             text-transform: uppercase;
             letter-spacing: 0.03em;
-        }
+        }}
 
-        .stage-section {
+        .stage-section {{
             margin-bottom: 16px;
-        }
+        }}
 
-        .stage-header {
+        .stage-header {{
             font-size: 0.95rem;
             font-weight: 700;
             color: var(--primary);
@@ -213,9 +407,9 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-        }
+        }}
 
-        .artist-card {
+        .artist-card {{
             background: var(--surface);
             border-radius: 10px;
             padding: 12px 14px;
@@ -225,51 +419,52 @@
             justify-content: space-between;
             border: 1px solid var(--border);
             transition: transform 0.1s, border-color 0.2s;
-        }
+        }}
 
-        .artist-card:active {
+        .artist-card:active {{
             transform: scale(0.98);
-        }
+        }}
 
-        .artist-card.is-fav {
+        .artist-card.is-fav {{
             border-color: rgba(250, 204, 21, 0.6);
             background: linear-gradient(135deg, var(--surface), rgba(250, 204, 21, 0.08));
-        }
+        }}
 
-        .artist-info {
+        .artist-info {{
             flex-grow: 1;
             padding-right: 12px;
-        }
+        }}
 
-        .artist-name {
+        .artist-name {{
             font-weight: 700;
             font-size: 0.95rem;
             color: var(--text);
             margin-bottom: 3px;
-        }
+        }}
 
-        .artist-time {
-            font-size: 0.8rem;
-            color: var(--text-muted);
+        .artist-time {{
+            font-size: 0.82rem;
+            color: var(--time-color);
             font-family: monospace;
-            font-weight: 600;
-        }
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }}
 
-        .fav-star {
+        .fav-star {{
             font-size: 1.4rem;
             cursor: pointer;
             color: var(--text-muted);
             user-select: none;
             transition: color 0.2s, transform 0.2s;
             padding: 4px;
-        }
+        }}
 
-        .fav-star.active {
+        .fav-star.active {{
             color: var(--star-color);
             transform: scale(1.15);
-        }
+        }}
 
-        .empty-state {
+        .empty-state {{
             text-align: center;
             padding: 50px 20px;
             color: var(--text-muted);
@@ -278,30 +473,7 @@
             border-radius: 12px;
             border: 1px dashed var(--border);
             margin-top: 10px;
-        }
-
-        .install-prompt {
-            margin: 12px 16px;
-            padding: 12px;
-            background: rgba(250, 204, 21, 0.08);
-            border: 1px dashed var(--primary);
-            border-radius: 10px;
-            font-size: 0.8rem;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .install-prompt button {
-            background: var(--primary);
-            color: #000000;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-weight: 700;
-            cursor: pointer;
-        }
+        }}
     </style>
 </head>
 <body>
@@ -324,22 +496,16 @@
         <div class="global-status" id="globalStatus">Tagesansicht</div>
     </div>
 
-    <div id="installBox" class="install-prompt" style="display: none;">
-        <span>App auf den Startbildschirm installieren?</span>
-        <button id="installBtn">Installieren</button>
-    </div>
-
     <main class="container" id="scheduleContainer"></main>
 
     <script>
-        const scheduleData = {"05.08. Mi": {"SMS.Kick off": [{"time": "18:00–19:00", "artist": "Sagezza"}, {"time": "19:00–20:00", "artist": "Katy Rough"}, {"time": "20:00–21:00", "artist": "Mariybu"}, {"time": "21:00–22:00", "artist": "HouseKaspeR"}, {"time": "22:00–23:00", "artist": "KXXMA"}, {"time": "23:00–00:00", "artist": "Foxon"}]}, "06.08. Do": {"SMS.Kick off": [{"time": "18:00–19:00", "artist": "TMLS"}, {"time": "19:00–20:00", "artist": "Carpool Boy"}, {"time": "20:00–21:15", "artist": "Luke Madness"}, {"time": "21:15–22:15", "artist": "Tekkschuster"}, {"time": "22:15–23:15", "artist": "BOVSKI"}, {"time": "23:30–01:00", "artist": "Tiefundton F2F Taktstörer"}]}, "07.08. Fr": {"Main Stage": [{"time": "17:00–18:00", "artist": "Green aka Agent A"}, {"time": "18:05–19:05", "artist": "Die Gebrüder Brett"}, {"time": "19:25–20:25", "artist": "Ikkimel"}, {"time": "20:35–21:35", "artist": "Gestört aber Geil"}, {"time": "22:00–23:25", "artist": "The Chainsmokers"}, {"time": "23:40–01:10", "artist": "Fisher"}, {"time": "01:30–02:40", "artist": "Scooter"}, {"time": "03:00–04:00", "artist": "Holy Priest PRES. HOLY SHIT SHOW"}], "Main Circus": [{"time": "18:00–20:00", "artist": "Kander"}, {"time": "20:00–21:30", "artist": "Ueberrest B2B Azzel 447"}, {"time": "21:30–23:00", "artist": "Prada2000"}, {"time": "23:00–00:30", "artist": "Somewhen"}, {"time": "00:30–02:00", "artist": "Kobosil"}, {"time": "02:00–03:00", "artist": "b2b2b2b"}, {"time": "03:00–04:30", "artist": "Clara Cuvé"}, {"time": "04:30–06:00", "artist": "Aiden"}], "Sun Stage": [{"time": "18:00–19:30", "artist": "T.M.N.H."}, {"time": "19:30–21:00", "artist": "DJ Gigola"}, {"time": "21:00–22:30", "artist": "LEVT"}, {"time": "22:30–00:00", "artist": "KUKO"}, {"time": "00:00–01:30", "artist": "Novah"}, {"time": "01:30–03:00", "artist": "Sara Landry"}, {"time": "03:00–05:00", "artist": "Cloudy"}], "SMS.Fortress": [{"time": "18:00–19:30", "artist": "DJ Tallboy"}, {"time": "19:30–21:00", "artist": "Trancemaster Krause"}, {"time": "21:00–22:30", "artist": "Hannah Laing"}, {"time": "22:30–00:00", "artist": "Paraçek"}, {"time": "00:00–01:30", "artist": "Pegassi"}, {"time": "01:30–03:00", "artist": "Schrotthagen"}, {"time": "03:00–06:00", "artist": "Cara Elizabeth B2B Part Time Killer"}], "SMS.Beach": [{"time": "17:00–18:30", "artist": "Marc Werner"}, {"time": "18:30–20:00", "artist": "Rezident"}, {"time": "20:00–21:30", "artist": "Kaufmann"}, {"time": "21:30–23:00", "artist": "Moritz Hofbauer"}, {"time": "23:00–00:30", "artist": "Dirty Doering"}, {"time": "00:30–02:00", "artist": "Alfred Heinrichs"}, {"time": "02:00–03:30", "artist": "Amber Broos"}, {"time": "03:30–05:00", "artist": "Tiefundton"}, {"time": "05:00–07:00", "artist": "Techmo"}], "Breaks'n'Drums": [{"time": "19:00–21:00", "artist": "Jon Void B2B Brian Brainstrom B2B Rebko"}, {"time": "21:00–22:15", "artist": "Bootleg feat. Daxta MC"}, {"time": "22:15–23:15", "artist": "[IVY]"}, {"time": "23:15–00:30", "artist": "Luude"}, {"time": "00:30–01:30", "artist": "Basstripper"}, {"time": "01:30–03:00", "artist": "Zombie Cats feat. Benski"}, {"time": "03:00–04:30", "artist": "Colin Cage"}, {"time": "04:30–06:00", "artist": "Calvin Burkardt"}], "Club Stage": [{"time": "20:00–21:00", "artist": "BIG TIM"}, {"time": "21:00–22:00", "artist": "Noel Holler"}, {"time": "22:00–23:00", "artist": "Niklas Dee"}, {"time": "23:00–00:20", "artist": "Luca-Dante Spadafora"}, {"time": "00:30–02:00", "artist": "OBS"}, {"time": "02:00–03:30", "artist": "Jerome"}, {"time": "03:30–05:00", "artist": "AXMO"}]}, "08.08. Sa": {"Main Stage": [{"time": "17:00–17:55", "artist": "Natte Visstick"}, {"time": "18:15–19:15", "artist": "Filow"}, {"time": "19:45–21:15", "artist": "Paul Kalkbrenner"}, {"time": "21:50–23:05", "artist": "SDP"}, {"time": "23:35–00:50", "artist": "BUNT."}, {"time": "01:30–03:00", "artist": "Skrillex EXCLUSIVE FESTIVAL SHOW IN GERMANY"}, {"time": "03:00–03:15", "artist": "Fireworks"}], "Main Circus": [{"time": "18:00–20:00", "artist": "Karla Blum"}, {"time": "20:00–21:15", "artist": "Lexy & K-Paul"}, {"time": "21:15–22:30", "artist": "Ely Oaks"}, {"time": "22:30–00:00", "artist": "KAACEE KomaCasper"}, {"time": "00:00–01:30", "artist": "REWI"}, {"time": "01:30–03:00", "artist": "Vieze Asbak"}, {"time": "03:15–04:15", "artist": "Angerfist"}, {"time": "04:15–05:00", "artist": "Basskiller"}], "Sun Stage": [{"time": "17:30–18:45", "artist": "Charleen Herzig"}, {"time": "18:45–20:00", "artist": "Kim Swim"}, {"time": "20:00–21:30", "artist": "Mischluft"}, {"time": "21:30–23:00", "artist": "Funk Tribu PRES. TRIBE A/V SHOW"}, {"time": "23:00–00:00", "artist": "Kalte Liebe LIVE"}, {"time": "00:00–01:30", "artist": "Klangkuenstler"}, {"time": "01:30–03:00", "artist": "Nico Moreno"}, {"time": "03:00–04:30", "artist": "I Hate Models"}, {"time": "04:30–06:00", "artist": "Fantasm"}], "SMS.Fortress": [{"time": "18:00–19:30", "artist": "BEXTC"}, {"time": "19:30–21:00", "artist": "NOTMYTYPE"}, {"time": "21:00–22:30", "artist": "Neon Graveyard"}, {"time": "22:30–00:00", "artist": "NIKOLINA"}, {"time": "00:00–01:30", "artist": "Nicolas Julian"}, {"time": "01:30–03:00", "artist": "A.N.I."}, {"time": "03:00–04:30", "artist": "JOWI"}, {"time": "04:30–06:00", "artist": "ElMefti"}], "SMS.Beach": [{"time": "14:00–15:00", "artist": "JOGA am Strand"}, {"time": "15:00–16:30", "artist": "Sarazar"}, {"time": "16:30–18:00", "artist": "Niconé"}, {"time": "18:00–19:30", "artist": "Mikah"}, {"time": "19:30–21:00", "artist": "Dominique Jardin"}, {"time": "21:00–22:30", "artist": "Township Rebellion"}, {"time": "22:30–00:00", "artist": "AEREA"}, {"time": "00:00–03:00", "artist": "Mika Heggemann B2B Davyboi"}, {"time": "03:15–05:00", "artist": "Bonnie Strange"}, {"time": "05:00–07:00", "artist": "Kyanu"}, {"time": "07:00–09:00", "artist": "Rainer Wachtelborn"}], "Breaks'n'Drums": [{"time": "18:00–19:00", "artist": "Kim Noble vs. Die Genossen Fett"}, {"time": "20:00–21:30", "artist": "Pull180"}, {"time": "21:30–22:45", "artist": "Judokay feat. MC Rob.K"}, {"time": "22:45–00:00", "artist": "Enter B2B Qerty"}, {"time": "00:00–01:00", "artist": "T&Sugah"}, {"time": "01:00–02:30", "artist": "Andy C"}, {"time": "02:30–03:30", "artist": "Tantron"}, {"time": "03:30–04:30", "artist": "VMAX B2B KIMMO"}, {"time": "04:30–06:00", "artist": "Hasky"}], "Club Stage": [{"time": "19:00–20:00", "artist": "Linda Grazia"}, {"time": "20:00–21:00", "artist": "Blondee"}, {"time": "21:00–22:00", "artist": "JO'L"}, {"time": "22:00–23:00", "artist": "DIA Plattenpussys"}, {"time": "23:00–00:00", "artist": "Plastik Funk"}, {"time": "00:00–01:00", "artist": "Justin Prince"}, {"time": "01:00–02:00", "artist": "Ostekke"}, {"time": "02:00–03:00", "artist": "Taktstörer"}, {"time": "03:00–04:00", "artist": "BLVCK CROWZ"}, {"time": "04:00–05:00", "artist": "AVE"}, {"time": "05:00–06:00", "artist": "Fappe & Bru"}], "SMS.Boat": [{"time": "11:00–12:00", "artist": "Franz!"}, {"time": "12:00–13:00", "artist": "Phake"}, {"time": "13:00–14:00", "artist": "Charleen Herzig"}, {"time": "14:00–15:00", "artist": "Davyboi"}, {"time": "15:00–16:00", "artist": "Andata"}, {"time": "16:00–17:00", "artist": "LEVT"}, {"time": "17:00–18:00", "artist": "KAACEE KomaCasper"}, {"time": "18:00–19:00", "artist": "Mika Heggemann"}, {"time": "19:00–20:00", "artist": "Township Rebellion"}]}, "09.08. So": {"SMS.Beach": [{"time": "09:00–11:00", "artist": "Alice DiMar"}, {"time": "11:00–13:00", "artist": "Gunjah"}, {"time": "13:00–15:00", "artist": "Markus Kavka"}, {"time": "15:00–17:00", "artist": "LEVT"}]}};
+        const scheduleData = {json.dumps(data, ensure_ascii=False)};
         let activeDay = "05.08. Mi";
         let showOnlyFavs = false;
         let favorites = JSON.parse(localStorage.getItem("sms_favs") || "[]");
-        let deferredPrompt;
 
         // Dynamic Manifest Injection
-        const manifest = {
+        const manifest = {{
             "name": "SMS Running Order",
             "short_name": "SMS Schedule",
             "start_url": ".",
@@ -347,93 +513,79 @@
             "background_color": "#0a0a0c",
             "theme_color": "#0a0a0c",
             "icons": [
-                {
+                {{
                     "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0a0c'/><text x='50' y='65' font-size='50' text-anchor='middle' fill='%23facc15'>⚡</text></svg>",
                     "sizes": "192x192 512x512",
                     "type": "image/svg+xml"
-                }
+                }}
             ]
-        };
+        }};
         const stringManifest = JSON.stringify(manifest);
-        const blobManifest = new Blob([stringManifest], {type: 'application/json'});
+        const blobManifest = new Blob([stringManifest], {{type: 'application/json'}});
         document.getElementById('manifest-placeholder').setAttribute('href', URL.createObjectURL(blobManifest));
 
         // Service Worker
-        if ('serviceWorker' in navigator) {
+        if ('serviceWorker' in navigator) {{
             const swCode = `
-                const CACHE_NAME = 'sms-pwa-v3';
-                self.addEventListener('install', e => {
+                const CACHE_NAME = 'sms-pwa-v4';
+                self.addEventListener('install', e => {{
                     e.waitUntil(
                         caches.open(CACHE_NAME).then(cache => cache.addAll(['./']))
                     );
                     self.skipWaiting();
-                });
-                self.addEventListener('fetch', e => {
+                }});
+                self.addEventListener('fetch', e => {{
                     e.respondWith(
                         caches.match(e.request).then(res => res || fetch(e.request))
                     );
-                });
+                }});
             `;
-            const blobSW = new Blob([swCode], {type: 'application/javascript'});
-            navigator.serviceWorker.register(URL.createObjectURL(blobSW)).catch(() => {});
-        }
+            const blobSW = new Blob([swCode], {{type: 'application/javascript'}});
+            navigator.serviceWorker.register(URL.createObjectURL(blobSW)).catch(() => {{}});
+        }}
 
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            document.getElementById('installBox').style.display = 'flex';
-        });
-
-        document.getElementById('installBtn')?.addEventListener('click', () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then(() => {
-                    deferredPrompt = null;
-                    document.getElementById('installBox').style.display = 'none';
-                });
-            }
-        });
-
-        function saveFavs() {
+        function saveFavs() {{
             localStorage.setItem("sms_favs", JSON.stringify(favorites));
             document.getElementById("favCount").innerText = favorites.length;
-        }
+        }}
 
-        function toggleFav(id) {
+        function toggleFav(id) {{
+            const scrollPos = window.scrollY;
             const index = favorites.indexOf(id);
-            if (index > -1) {
+            if (index > -1) {{
                 favorites.splice(index, 1);
-            } else {
+            }} else {{
                 favorites.push(id);
-            }
+            }}
             saveFavs();
             renderData();
-        }
+            window.scrollTo(0, scrollPos);
+        }}
 
-        function toggleFavFilter() {
+        function toggleFavFilter() {{
             showOnlyFavs = !showOnlyFavs;
             document.getElementById("favFilterBtn").classList.toggle("active", showOnlyFavs);
             renderData();
-        }
+        }}
 
-        function initNav() {
+        function initNav() {{
             const nav = document.getElementById("dayNav");
             nav.innerHTML = "";
-            Object.keys(scheduleData).forEach((day) => {
+            Object.keys(scheduleData).forEach((day) => {{
                 const btn = document.createElement("button");
-                btn.className = `day-btn ${day === activeDay ? 'active' : ''}`;
-                btn.id = `nav_day_${day.replace(/[^a-zA-Z0-9]/g, '_')}`;
+                btn.className = `day-btn ${{day === activeDay ? 'active' : ''}}`;
+                btn.id = `nav_day_${{day.replace(/[^a-zA-Z0-9]/g, '_')}}`;
                 btn.innerText = day;
-                btn.onclick = () => {
+                btn.onclick = () => {{
                     activeDay = day;
                     renderData();
-                };
+                }};
                 nav.appendChild(btn);
-            });
+            }});
             saveFavs();
-        }
+        }}
 
-        function renderData() {
+        function renderData() {{
             const container = document.getElementById("scheduleContainer");
             const searchQuery = document.getElementById("searchInput").value.toLowerCase().trim();
             const statusEl = document.getElementById("globalStatus");
@@ -442,31 +594,31 @@
             const isGlobalMode = showOnlyFavs || searchQuery !== "";
 
             // Update UI Day nav state
-            document.querySelectorAll('.day-btn').forEach(btn => {
-                if (isGlobalMode) {
+            document.querySelectorAll('.day-btn').forEach(btn => {{
+                if (isGlobalMode) {{
                     btn.classList.add('disabled');
                     btn.classList.remove('active');
-                } else {
+                }} else {{
                     btn.classList.remove('disabled');
                     const btnDay = btn.innerText;
                     btn.classList.toggle('active', btnDay === activeDay);
-                }
-            });
+                }}
+            }});
 
-            if (showOnlyFavs && searchQuery !== "") {
+            if (showOnlyFavs && searchQuery !== "") {{
                 statusEl.innerText = "Favoriten + Suche";
-            } else if (showOnlyFavs) {
+            }} else if (showOnlyFavs) {{
                 statusEl.innerText = "Alle Favoriten";
-            } else if (searchQuery !== "") {
+            }} else if (searchQuery !== "") {{
                 statusEl.innerText = "Globale Suche";
-            } else {
-                statusEl.innerText = `Tag: ${activeDay}`;
-            }
+            }} else {{
+                statusEl.innerText = `Tag: ${{activeDay}}`;
+            }}
 
             const daysToEvaluate = isGlobalMode ? Object.keys(scheduleData) : [activeDay];
             let hasGlobalContent = false;
 
-            daysToEvaluate.forEach(day => {
+            daysToEvaluate.forEach(day => {{
                 const dayData = scheduleData[day];
                 if (!dayData) return;
 
@@ -474,68 +626,68 @@
                 const dayBlock = document.createElement("div");
                 dayBlock.className = "day-block";
 
-                if (isGlobalMode) {
+                if (isGlobalMode) {{
                     const dayTitle = document.createElement("div");
                     dayTitle.className = "global-day-title";
                     dayTitle.innerText = day;
                     dayBlock.appendChild(dayTitle);
-                }
+                }}
 
-                Object.keys(dayData).forEach(stage => {
+                Object.keys(dayData).forEach(stage => {{
                     const artists = dayData[stage];
-                    const filteredArtists = artists.filter(item => {
-                        const artistId = `${day}_${stage}_${item.artist}_${item.time}`;
+                    const filteredArtists = artists.filter(item => {{
+                        const artistId = `${{day}}_${{stage}}_${{item.artist}}_${{item.time}}`;
                         const isFav = favorites.includes(artistId);
                         const matchesSearch = item.artist.toLowerCase().includes(searchQuery) || stage.toLowerCase().includes(searchQuery);
 
                         if (showOnlyFavs && !isFav) return false;
                         return matchesSearch;
-                    });
+                    }});
 
-                    if (filteredArtists.length > 0) {
+                    if (filteredArtists.length > 0) {{
                         dayHasContent = true;
                         hasGlobalContent = true;
 
                         const stageEl = document.createElement("div");
                         stageEl.className = "stage-section";
 
-                        let stageHtml = `<div class="stage-header"><span>${stage}</span></div>`;
+                        let stageHtml = `<div class="stage-header"><span>${{stage}}</span></div>`;
 
-                        filteredArtists.forEach(item => {
-                            const artistId = `${day}_${stage}_${item.artist}_${item.time}`;
+                        filteredArtists.forEach(item => {{
+                            const artistId = `${{day}}_${{stage}}_${{item.artist}}_${{item.time}}`;
                             const isFav = favorites.includes(artistId);
 
                             stageHtml += `
-                                <div class="artist-card ${isFav ? 'is-fav' : ''}">
+                                <div class="artist-card ${{isFav ? 'is-fav' : ''}}">
                                     <div class="artist-info">
-                                        <div class="artist-name">${item.artist}</div>
-                                        <div class="artist-time">${item.time}</div>
+                                        <div class="artist-name">${{item.artist}}</div>
+                                        <div class="artist-time">${{item.time}}</div>
                                     </div>
-                                    <div class="fav-star ${isFav ? 'active' : ''}" onclick="toggleFav('${artistId}')">
+                                    <div class="fav-star ${{isFav ? 'active' : ''}}" onclick="toggleFav('${{artistId}}')">
                                         ★
                                     </div>
                                 </div>
                             `;
-                        });
+                        }});
 
                         stageEl.innerHTML = stageHtml;
                         dayBlock.appendChild(stageEl);
-                    }
-                });
+                    }}
+                }});
 
-                if (dayHasContent) {
+                if (dayHasContent) {{
                     container.appendChild(dayBlock);
-                }
-            });
+                }}
+            }});
 
-            if (!hasGlobalContent) {
+            if (!hasGlobalContent) {{
                 container.innerHTML = `
                     <div class="empty-state">
-                        ${showOnlyFavs ? 'Keine Favoriten gespeichert.' : 'Keine Treffer gefunden.'}
+                        ${{showOnlyFavs ? 'Keine Favoriten gespeichert.' : 'Keine Treffer gefunden.'}}
                     </div>
                 `;
-            }
-        }
+            }}
+        }}
 
         initNav();
         renderData();
